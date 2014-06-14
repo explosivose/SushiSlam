@@ -129,18 +129,36 @@ public class PlatformerCharacter2D : MonoBehaviour
 	IEnumerator AttackRoutine() {
 		attacking = true;
 		timing.lastAttackTime = Time.time;
-		Debug.Log ("Attacking! " + timing.lastAttackTime);
 		RaycastHit2D hit;
+		Vector2 direction = Vector2.right;
+		if (!facingRight) direction = -Vector2.right;
+		
 		switch (combo)
 		{
 		case 1:
-			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, new Vector2(0f,0f));
-			if (hit.transform.tag == "Player")
+			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
+			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
+			if (hit.transform.tag == "Player") {
+				Debug.Log ("I hit a player");
 				hit.transform.SendMessage("Damage");
+			}
+				
 			break;
 		case 2:
+			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
+			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
+			if (hit.transform.tag == "Player") {
+				Debug.Log ("I hit a player");
+				hit.transform.SendMessage("Damage");
+			}
 			break;
 		case 3:
+			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
+			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
+			if (hit.transform.tag == "Player") {
+				Debug.Log ("I hit a player");
+				hit.transform.SendMessage("Damage");
+			}
 			break;
 		default:
 			combo = 0;
@@ -152,7 +170,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		attacking = false;
 	}
 	
-	void Damage() {
+	public void Damage() {
 		Debug.Log ("I got hit!");
 	}
 	
@@ -160,7 +178,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		if (grounded && !attacking) {
 			if (Input.GetButtonDown("P"+p.ToString()+"Attack")) {
-				Debug.Log ("Attack button");
 				if ( combo == 0 ) {
 					anim.SetInteger("Combo", ++combo);
 					StartCoroutine(AttackRoutine());
