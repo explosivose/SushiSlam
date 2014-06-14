@@ -48,6 +48,7 @@ public class GameManager : Singleton<GameManager>
 		player1.GetComponent<PlatformerCharacter2D>().p = 1;
 		player2 = Instantiate(player2, player2SpawnPoint.position, Quaternion.identity) as Transform;
 		player2.GetComponent<PlatformerCharacter2D>().p = 2;
+		SushiCamera.Instance.Initialise(player1, player2);
 		UnPause();
 	}
 	
