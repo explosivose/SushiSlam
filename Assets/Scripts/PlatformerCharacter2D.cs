@@ -66,6 +66,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
+		if (grounded) anim.SetBool("Jump", false);
 
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
@@ -109,6 +110,7 @@ public class PlatformerCharacter2D : MonoBehaviour
         if (grounded && jump) {
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
+            anim.SetBool("Jump", true);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
@@ -132,7 +134,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		RaycastHit2D hit;
 		Vector2 direction = Vector2.right;
 		if (!facingRight) direction = -Vector2.right;
-		
 		switch (combo)
 		{
 		case 1:
@@ -156,8 +157,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
 			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
 			if (hit.transform.tag == "Player") {
-				Debug.Log ("I hit a player");
-				hit.transform.SendMessage("Damage");
+				Debug.Log ("I knocked a player");
+				hit.rigidbody.AddForce(direction * 10f);
+				hit.transform.SendMessage("Knockback");
 			}
 			break;
 		default:
@@ -172,6 +174,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	public void Damage() {
 		Debug.Log ("I got hit!");
+		if (!grounded) {
+			Knockback();
+			return;
+		}
+		anim.SetBool("Damaged", true);
+	}
+	
+	public void Knockback() {
+		anim.SetBool("Damaged", true);
 	}
 	
 	void Attack()
