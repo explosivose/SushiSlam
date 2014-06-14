@@ -10,6 +10,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	[SerializeField] float jumpForce = 400f;			// Amount of force added when the player jumps.	
 	[SerializeField] float weaponLength = 0.1f;
 	[SerializeField] Vector2 weaponOffset;
+	[SerializeField] float knockbackForce = 1000f;
 	[SerializeField] bool airControl = false;			// Whether or not a player can steer while jumping;
 	[SerializeField] LayerMask whatIsGround;			// A mask determining what is ground to the character
 	
@@ -35,6 +36,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		/// </summary>
 		public float recoveryAfterDamagedJump;
 		public float recoveryAfterDamagedJumpWindowSize;
+		
+		public float lengthOfBlock;
+		public float blockCooldown;
 	}
 	public CharacterTimings timing;
 	
@@ -46,6 +50,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Animator anim;										// Reference to the player's animator component.
 	bool jump;
 	bool attacking = false;
+	bool blocked = false;
+	bool canBlock = true;
 	int combo = 0;
 	
 
@@ -74,7 +80,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 		
 		Attack();
-		
+		Block();
 	}
 	
 	void FixedUpdate(){
@@ -139,7 +145,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		case 1:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
 			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player") {
+			if (hit.transform.tag == "Player" && hit.transform != transform) {
 				Debug.Log ("I hit a player");
 				hit.transform.SendMessage("Damage");
 			}
@@ -148,7 +154,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		case 2:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
 			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player") {
+			if (hit.transform.tag == "Player" && hit.transform != transform) {
 				Debug.Log ("I hit a player");
 				hit.transform.SendMessage("Damage");
 			}
@@ -156,9 +162,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		case 3:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
 			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player") {
+			if (hit.transform.tag == "Player" && hit.transform != transform) {
 				Debug.Log ("I knocked a player");
-				hit.rigidbody.AddForce(direction * 10f);
+				hit.rigidbody.AddForce((direction+Vector2.up) * knockbackForce);
 				hit.transform.SendMessage("Knockback");
 			}
 			break;
@@ -168,21 +174,51 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		
 		yield return new WaitForEndOfFrame();
-		combo = 0;
 		attacking = false;
 	}
 	
-	public void Damage() {
-		Debug.Log ("I got hit!");
-		if (!grounded) {
-			Knockback();
-			return;
+	public IEnumerator Damage() {
+		if (blocked) {
+			Debug.Log ("I blocked");
 		}
-		anim.SetBool("Damaged", true);
+		else {
+			Debug.Log ("I got hit!");
+			if (!grounded) {
+				yield return StartCoroutine(Knockback());
+			}
+			else {
+				anim.SetBool("Damaged", true);
+				yield return new WaitForSeconds(1f);
+				anim.SetBool("Damaged", false);
+			}
+		}
+
 	}
 	
-	public void Knockback() {
+	public IEnumerator Knockback() {
 		anim.SetBool("Damaged", true);
+		airControl = false;
+		yield return new WaitForSeconds(1f);
+		airControl = true;
+		anim.SetBool("Damaged", false);
+	}
+	
+	void Block() {
+		if (Input.GetButtonDown("P"+p.ToString()+"Block") && canBlock && !attacking) {
+			Debug.Log ("Blocking!");
+			StartCoroutine(BlockRoutine());
+		}
+	}
+	
+	IEnumerator BlockRoutine() {
+		blocked = true;
+		canBlock = false;
+		anim.SetBool("Block", blocked);
+		yield return new WaitForSeconds(timing.lengthOfBlock);
+		blocked = false;
+		anim.SetBool("Block", blocked);
+		yield return new WaitForSeconds(timing.blockCooldown);
+		canBlock = true;
 	}
 	
 	void Attack()
@@ -206,6 +242,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 					}
 				}
 			}
+		}
+		// waited too long, combo back to zero
+		if (Time.time > timing.lastAttackTime + timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize) {
+			combo = 0;
+			anim.SetInteger("Combo", combo);
 		}
 	}
 	

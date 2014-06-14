@@ -167,6 +167,8 @@ MonoBehaviour:
     cooldownAfter3Attacks: 2
     recoveryAfterDamagedJump: .5
     recoveryAfterDamagedJumpWindowSize: .25
+    lengthOfBlock: .200000003
+    blockCooldown: .200000003
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
