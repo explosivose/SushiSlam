@@ -33,25 +33,19 @@ public class GameManager : Singleton<GameManager>
 		NoWindows,
 		StartScreen,
 		PauseMenu,
-		DeathScreen,
-		Options,
+		GameOver,
 		HowToPlay,
+		Options,
 		Credits
 	}
 	
 	private GUIState gui = GUIState.StartScreen;
 
-	public void Initialise()
-	{
-		Debug.Log ("init");
-	}
-
-
 	void StartGame()
 	{
 		// spawn two players here!
 		UnPause();
-
+		
 	}
 	
 	void Restart()
@@ -81,7 +75,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		Screen.lockCursor = false;
 		state = State.GameOver;
-		gui = GUIState.DeathScreen;
+		gui = GUIState.GameOver;
 	}
 	
 	void Awake()
@@ -99,6 +93,24 @@ public class GameManager : Singleton<GameManager>
 	void wStartScreen(int windowID)
 	{
 		GUILayout.Space (100);
+		
+		GUILayout.BeginHorizontal();
+		if (GUILayout.Button("Start", menuSkin.button))
+			StartGame();
+		
+		if (GUILayout.Button("How to play", menuSkin.button))
+			gui = GUIState.HowToPlay;
+		
+		if (GUILayout.Button("Options", menuSkin.button))
+			gui = GUIState.Options;
+		
+		if (GUILayout.Button ("Credits", menuSkin.button))
+			gui = GUIState.Credits;
+		
+		if (GUILayout.Button ("Exit", menuSkin.button))
+			Application.Quit();
+			
+		GUILayout.EndHorizontal();
 	}
 
 	public GUIWindow deathScreen = new GUIWindow();
@@ -107,14 +119,12 @@ public class GameManager : Singleton<GameManager>
 		GUILayout.Space (100);
 		
 		GUILayout.BeginHorizontal();
-		if (GUILayout.Button("Restart", menuSkin.button))
+		if (GUILayout.Button("Rematch!", menuSkin.button))
 			Restart();
 		
-		if (GUILayout.Button ("Credits", menuSkin.button))
-			gui = GUIState.Credits;
-		
-		if (GUILayout.Button ("Exit", menuSkin.button))
-			Application.Quit();
+		if (GUILayout.Button ("Main menu", menuSkin.button))
+			gui = GUIState.StartScreen;
+			
 		GUILayout.EndHorizontal();
 	}
 	
@@ -124,14 +134,22 @@ public class GameManager : Singleton<GameManager>
 		GUILayout.Space (100);
 		
 		GUILayout.BeginHorizontal();
+		
 		if (GUILayout.Button("Resume", menuSkin.button))
 			UnPause();
 		
-		if (GUILayout.Button ("Restart", menuSkin.button))
-			Restart();
+		if (GUILayout.Button("How to play", menuSkin.button))
+			gui = GUIState.HowToPlay;
+		
+		if (GUILayout.Button("Options", menuSkin.button))
+			gui = GUIState.Options;
+		
+		if (GUILayout.Button ("Credits", menuSkin.button))
+			gui = GUIState.Credits;
 		
 		if (GUILayout.Button ("Exit", menuSkin.button))
 			Application.Quit();
+			
 		GUILayout.EndHorizontal();
 	}
 	
@@ -157,7 +175,7 @@ public class GameManager : Singleton<GameManager>
 		GUILayout.Space (15);
 		
 		if (GUILayout.Button("Back",menuSkin.button))
-			gui = GUIState.DeathScreen;
+			gui = GUIState.GameOver;
 	}
 	
 	public GUIWindow howToPlay = new GUIWindow();
@@ -165,11 +183,27 @@ public class GameManager : Singleton<GameManager>
 	{
 		GUILayout.Space (100);
 		
-		GUILayout.Label ("FUTILE CODA", menuSkin.label);
-		GUILayout.Label("MOVE: WASD", menuSkin.label);
-		GUILayout.Label ("CHANGE WEAPON: Q (q)", menuSkin.label);
-		GUILayout.Label ("LEFT CLICK: FIRE", menuSkin.label);
-		
+		GUILayout.Label ("SushiSlam Default Controls", menuSkin.label);
+		GUILayout.BeginHorizontal();
+		GUILayout.Label("Player 1", menuSkin.label);
+		GUILayout.Label("Player 2", menuSkin.label);
+		GUILayout.EndHorizontal();
+		GUILayout.BeginHorizontal();
+		GUILayout.Label ("LEFT:A, D:RIGHT", menuSkin.label);
+		GUILayout.Label ("LEFT:LARROW, RIGHT:RARROW", menuSkin.label);
+		GUILayout.EndHorizontal();
+		GUILayout.BeginHorizontal();
+		GUILayout.Label ("JUMP:W", menuSkin.label);
+		GUILayout.Label ("JUMP:UPARROW", menuSkin.label);
+		GUILayout.EndHorizontal();
+		GUILayout.BeginHorizontal();
+		GUILayout.Label ("ATTACK:SPACE", menuSkin.label);
+		GUILayout.Label ("ATTACK:RCTRL", menuSkin.label);
+		GUILayout.EndHorizontal();
+		GUILayout.BeginHorizontal();
+		GUILayout.Label ("BLOCK:S", menuSkin.label);
+		GUILayout.Label ("BLOCK:DARROW", menuSkin.label);
+		GUILayout.EndHorizontal();
 		GUILayout.Space (15);
 		
 		if (GUILayout.Button("Weapon Select",menuSkin.button))
@@ -186,7 +220,7 @@ public class GameManager : Singleton<GameManager>
 		case GUIState.StartScreen:
 			currentWindow = startScreen;
 			break;
-		case GUIState.DeathScreen:
+		case GUIState.GameOver:
 			currentWindow = deathScreen;
 			break;
 		case GUIState.PauseMenu:
@@ -213,7 +247,7 @@ public class GameManager : Singleton<GameManager>
 		case GUIState.StartScreen:
 			GUILayout.Window (1, windowSize, wStartScreen, "SUSHI SLAM", menuSkin.window);
 			break;
-		case GUIState.DeathScreen:
+		case GUIState.GameOver:
 			GUILayout.Window (1, windowSize, wDeathMenu, "HONOR", menuSkin.window);
 			break;
 		case GUIState.PauseMenu:
