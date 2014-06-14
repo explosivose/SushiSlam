@@ -11,6 +11,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	[SerializeField] float weaponLength = 0.1f;
 	[SerializeField] Vector2 weaponOffset;
 	[SerializeField] float knockbackForce = 1000f;
+	[SerializeField] float sushiForce = 2000f;
 	[SerializeField] bool airControl = false;			// Whether or not a player can steer while jumping;
 	[SerializeField] LayerMask whatIsGround;			// A mask determining what is ground to the character
 	
@@ -52,6 +53,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool attacking = false;
 	bool blocked = false;
 	bool canBlock = true;
+	bool sushi = false;
 	int combo = 0;
 	
 
@@ -168,6 +170,17 @@ public class PlatformerCharacter2D : MonoBehaviour
 				hit.transform.SendMessage("Knockback");
 			}
 			break;
+		case 5:
+			Debug.Log ("ultimate sushi slam");
+			Debug.DrawRay(transform.position, direction * weaponLength*2, Color.red, 1f);
+			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength*2, direction);
+			if (hit.transform.tag == "Player" && hit.transform != transform) {
+				Debug.Log ("Sushi slamed a player");
+				hit.rigidbody.AddForce((direction+Vector2.up) * sushiForce);
+				hit.transform.SendMessage("killMe");
+				combo = 0;
+			}
+			break;
 		default:
 			combo = 0;
 			break;
@@ -193,6 +206,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 
+	}
+	
+	public IEnumerator killMe() {
+		if (blocked) {
+			Debug.Log ("I blocked ultimate sushi");
+		}
+		else {
+			Debug.Log ("i am dead waah");
+			anim.SetBool("Kill", true);
+			yield return new WaitForSeconds(4f);
+			Destroy (gameObject);
+		}
 	}
 	
 	public IEnumerator Knockback() {
@@ -229,6 +254,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 					anim.SetInteger("Combo", ++combo);
 					StartCoroutine(AttackRoutine());
 				}
+				else if (combo == 5) {
+					anim.SetInteger("Combo", combo);
+					StartCoroutine(AttackRoutine());
+				}
 				else {
 					
 					if (Time.time - timing.lastAttackTime > timing.timeBetweenAttacks - timing.timeBetweenAttacksWindowSize/2f &&
@@ -244,7 +273,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 		}
 		// waited too long, combo back to zero
-		if (Time.time > timing.lastAttackTime + timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize) {
+		if (Time.time > timing.lastAttackTime + timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize && !sushi) {
 			combo = 0;
 			anim.SetInteger("Combo", combo);
 		}
@@ -252,5 +281,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	Vector2 WeaponStart() {
 		return new Vector2(transform.position.x, transform.position.y);
+	}
+	
+	void OnCollisionEnter2D(Collision2D collision){
+		if (collision.gameObject.tag == "Sushi") {
+			Debug.Log ("ultimate sushi eaten");
+			sushi = true;
+			combo = 5;
+			Debug.Log (combo);
+			Destroy (collision.gameObject);
+		}
 	}
 }

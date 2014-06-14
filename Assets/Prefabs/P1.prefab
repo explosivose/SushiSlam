@@ -156,6 +156,7 @@ MonoBehaviour:
   jumpForce: 200
   weaponLength: 1
   weaponOffset: {x: 0, y: 0}
+  knockbackForce: 500
   airControl: 1
   whatIsGround:
     serializedVersion: 2
@@ -168,7 +169,7 @@ MonoBehaviour:
     recoveryAfterDamagedJump: .5
     recoveryAfterDamagedJumpWindowSize: .25
     lengthOfBlock: .200000003
-    blockCooldown: .200000003
+    blockCooldown: .400000006
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
