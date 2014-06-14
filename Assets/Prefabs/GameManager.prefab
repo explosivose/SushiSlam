@@ -39,6 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b8a4aaff498d64d953a49ad29bbf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefabs: []
+  player1SpawnPoint: {fileID: 0}
+  player2SpawnPoint: {fileID: 0}
   mainMenu:
     DesignHeight: 30
     HeightIs: 0

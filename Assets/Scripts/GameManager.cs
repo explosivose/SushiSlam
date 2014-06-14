@@ -3,6 +3,9 @@ using System.Collections;
 
 public class GameManager : Singleton<GameManager> 
 {
+	public Transform[] playerPrefabs;
+	public Transform player1SpawnPoint;
+	public Transform player2SpawnPoint;
 	public bool GameIsPaused
 	{
 		get 
@@ -13,9 +16,6 @@ public class GameManager : Singleton<GameManager>
 	
 	private Rect windowSize = new Rect();
 	private GUISkin menuSkin;
-	
-	private int p1select = 0;
-	private int p2select = 1;
 	
 	
 	private enum State
@@ -42,9 +42,13 @@ public class GameManager : Singleton<GameManager>
 
 	void StartGame()
 	{
-		// spawn two players here!
+		Transform player1 = playerPrefabs[CharacterSelection.Instance.p1Choice-1];
+		Transform player2 = playerPrefabs[CharacterSelection.Instance.p2Choice-1];
+		player1 = Instantiate(player1, player1SpawnPoint.position, Quaternion.identity) as Transform;
+		player1.GetComponent<PlatformerCharacter2D>().p = 1;
+		player2 = Instantiate(player2, player2SpawnPoint.position, Quaternion.identity) as Transform;
+		player2.GetComponent<PlatformerCharacter2D>().p = 2;
 		UnPause();
-		
 	}
 	
 	void Restart()
