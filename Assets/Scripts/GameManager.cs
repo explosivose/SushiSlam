@@ -31,15 +31,14 @@ public class GameManager : Singleton<GameManager>
 	private enum GUIState
 	{
 		NoWindows,
-		StartScreen,
-		PauseMenu,
+		MainMenu,
 		GameOver,
 		HowToPlay,
 		Options,
 		Credits
 	}
 	
-	private GUIState gui = GUIState.StartScreen;
+	private GUIState gui = GUIState.MainMenu;
 
 	void StartGame()
 	{
@@ -59,7 +58,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		Screen.lockCursor = false;
 		state = State.Paused;
-		gui = GUIState.PauseMenu;
+		gui = GUIState.MainMenu;
 		Time.timeScale = 0f;
 	}
 	
@@ -89,14 +88,23 @@ public class GameManager : Singleton<GameManager>
 		else if (Input.GetKeyDown(KeyCode.Escape) && state == State.Paused) UnPause();
 	}
 
-	public GUIWindow startScreen = new GUIWindow();
-	void wStartScreen(int windowID)
+	public GUIWindow mainMenu = new GUIWindow();
+	void wMainMenu(int windowID)
 	{
 		GUILayout.Space (100);
 		
 		GUILayout.BeginHorizontal();
-		if (GUILayout.Button("Start", menuSkin.button))
-			StartGame();
+		
+
+		
+		if (state == State.Paused) {
+			if (GUILayout.Button("Resume", menuSkin.button))
+				UnPause();
+		}
+		else {
+			if (GUILayout.Button("Start", menuSkin.button))
+				StartGame();
+		}
 		
 		if (GUILayout.Button("How to play", menuSkin.button))
 			gui = GUIState.HowToPlay;
@@ -123,32 +131,7 @@ public class GameManager : Singleton<GameManager>
 			Restart();
 		
 		if (GUILayout.Button ("Main menu", menuSkin.button))
-			gui = GUIState.StartScreen;
-			
-		GUILayout.EndHorizontal();
-	}
-	
-	public GUIWindow pauseMenu = new GUIWindow();
-	void wPauseMenu(int windowID)
-	{
-		GUILayout.Space (100);
-		
-		GUILayout.BeginHorizontal();
-		
-		if (GUILayout.Button("Resume", menuSkin.button))
-			UnPause();
-		
-		if (GUILayout.Button("How to play", menuSkin.button))
-			gui = GUIState.HowToPlay;
-		
-		if (GUILayout.Button("Options", menuSkin.button))
-			gui = GUIState.Options;
-		
-		if (GUILayout.Button ("Credits", menuSkin.button))
-			gui = GUIState.Credits;
-		
-		if (GUILayout.Button ("Exit", menuSkin.button))
-			Application.Quit();
+			gui = GUIState.MainMenu;
 			
 		GUILayout.EndHorizontal();
 	}
@@ -157,9 +140,9 @@ public class GameManager : Singleton<GameManager>
 	void wOptions(int windowID)
 	{
 		GUILayout.Space (100);
-		
+		GUILayout.Label ("No options lol", menuSkin.label);
 		if (GUILayout.Button("Main Menu",menuSkin.button))
-			gui = GUIState.PauseMenu;
+			gui = GUIState.MainMenu;
 	}
 	
 	public GUIWindow credits = new GUIWindow();
@@ -175,7 +158,7 @@ public class GameManager : Singleton<GameManager>
 		GUILayout.Space (15);
 		
 		if (GUILayout.Button("Back",menuSkin.button))
-			gui = GUIState.GameOver;
+			gui = GUIState.MainMenu;
 	}
 	
 	public GUIWindow howToPlay = new GUIWindow();
@@ -206,8 +189,8 @@ public class GameManager : Singleton<GameManager>
 		GUILayout.EndHorizontal();
 		GUILayout.Space (15);
 		
-		if (GUILayout.Button("Weapon Select",menuSkin.button))
-			gui = GUIState.StartScreen;
+		if (GUILayout.Button("Main Menu",menuSkin.button))
+			gui = GUIState.MainMenu;
 	}
 	
 	void OnGUI()
@@ -217,14 +200,11 @@ public class GameManager : Singleton<GameManager>
 		// Copy GUIWindow settings to thisWindow
 		switch ( gui )
 		{
-		case GUIState.StartScreen:
-			currentWindow = startScreen;
+		case GUIState.MainMenu:
+			currentWindow = mainMenu;
 			break;
 		case GUIState.GameOver:
 			currentWindow = deathScreen;
-			break;
-		case GUIState.PauseMenu:
-			currentWindow = pauseMenu;
 			break;
 		case GUIState.Options:
 			currentWindow = options;
@@ -244,20 +224,17 @@ public class GameManager : Singleton<GameManager>
 		// Draw thisWindow (GUILayout.Window)
 		switch ( gui )
 		{
-		case GUIState.StartScreen:
-			GUILayout.Window (1, windowSize, wStartScreen, "SUSHI SLAM", menuSkin.window);
+		case GUIState.MainMenu:
+			GUILayout.Window (1, windowSize, wMainMenu, "SUSHI SLAM", menuSkin.window);
 			break;
 		case GUIState.GameOver:
 			GUILayout.Window (1, windowSize, wDeathMenu, "HONOR", menuSkin.window);
-			break;
-		case GUIState.PauseMenu:
-			GUILayout.Window (1, windowSize, wPauseMenu, "WAIT", menuSkin.window);
 			break;
 		case GUIState.Credits:
 			GUILayout.Window (1, windowSize, wCredits, "CREDITS", menuSkin.window);
 			break;
 		case GUIState.Options:
-			GUILayout.Window (1, windowSize, wCredits, "OPTIONS", menuSkin.window);
+			GUILayout.Window (1, windowSize, wOptions, "OPTIONS", menuSkin.window);
 			break;
 		case GUIState.HowToPlay:
 			GUILayout.Window (1, windowSize, wHowToPlay, "CONTROLS", menuSkin.window);

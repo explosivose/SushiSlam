@@ -39,32 +39,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b8a4aaff498d64d953a49ad29bbf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startScreen:
-    DesignHeight: 100
+  mainMenu:
+    DesignHeight: 30
     HeightIs: 0
     DesignWidth: 100
     WidthIs: 0
-    Align: 4
+    Align: 1
     verticalOffset: 0
     horizontalOffset: 0
   deathScreen:
     DesignHeight: 100
     HeightIs: 0
-    DesignWidth: 100
-    WidthIs: 0
-    Align: 4
-    verticalOffset: 0
-    horizontalOffset: 0
-  pauseMenu:
-    DesignHeight: 100
-    HeightIs: 0
-    DesignWidth: 100
+    DesignWidth: 30
     WidthIs: 0
     Align: 4
     verticalOffset: 0
     horizontalOffset: 0
   options:
-    DesignHeight: 100
+    DesignHeight: 30
     HeightIs: 0
     DesignWidth: 100
     WidthIs: 0
@@ -72,7 +64,7 @@ MonoBehaviour:
     verticalOffset: 0
     horizontalOffset: 0
   credits:
-    DesignHeight: 100
+    DesignHeight: 30
     HeightIs: 0
     DesignWidth: 100
     WidthIs: 0
