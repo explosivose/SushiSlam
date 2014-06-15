@@ -9,8 +9,8 @@ public class SushiCamera : Singleton<SushiCamera> {
 		ready = true;
 	}
 	
-	private Transform p1, p2;
-	private bool ready = false;
+	public Transform p1, p2;
+	public bool ready = false;
 	// Update is called once per frame
 	void Update () {
 		if(!ready) return;
