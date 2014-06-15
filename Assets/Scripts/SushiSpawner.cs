@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SushiSpawner : MonoBehaviour {
+public class SushiSpawner : Singleton<SushiSpawner> {
 
 	public AudioClip sushiSpawnClip;
 

@@ -247,7 +247,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			combo = 0;
 			sushi = false;
 			sushiEffect.Stop ();
-			GameManager.Instance.transform.SendMessage ("StartSpawn");
+			SushiSpawner.Instance.SendMessage("StartSpawn");
 			break;
 		default:
 			combo = 0;
@@ -344,7 +344,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	IEnumerator victory() {
 		yield return new WaitForSeconds (4);
-		AudioSource.PlayClipAtPoint(victoryClip, GameManager.Instance.transform.position);
+		AudioSource.PlayClipAtPoint(victoryClip, Vector3.zero);
+		GameManager.Instance.GameOver();
 	}
 	
 

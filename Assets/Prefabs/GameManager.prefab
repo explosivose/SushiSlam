@@ -9,8 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -90,46 +88,6 @@ MonoBehaviour:
     Align: 4
     verticalOffset: 0
     horizontalOffset: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589043265d4f9d148b314da741336c10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sushiSpawnClip: {fileID: 8300000, guid: 83410a43e19c0b94c92de1de86fdab06, type: 3}
-  spawnLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  sushiInPlay: 0
-  sushiSpawnTime: 15
-  sushiStartTime: 0
-  sushi: {fileID: 100000, guid: 6f5a1f29c53bc494ea44406b7348d7be, type: 2}
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38d8d25b2de0cb14d90c3e48a15ba06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  p1Choice: 0
-  p2Choice: 1
-  selection:
-  - {fileID: 0}
-  - {fileID: 0}
-  p1selector: {fileID: 0}
-  p2selector: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

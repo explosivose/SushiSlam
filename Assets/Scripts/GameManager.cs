@@ -42,6 +42,7 @@ public class GameManager : Singleton<GameManager>
 
 	void StartGame()
 	{
+		/*
 		Transform player1 = playerPrefabs[CharacterSelection.Instance.p1Choice];
 		Transform player2 = playerPrefabs[CharacterSelection.Instance.p2Choice];
 		int p1spawn = Random.Range(0, spawnpoints.Length-1);
@@ -53,13 +54,9 @@ public class GameManager : Singleton<GameManager>
 		player2 = Instantiate(player2, spawnpoints[p1spawn].position, Quaternion.identity) as Transform;
 		player2.GetComponent<PlatformerCharacter2D>().p = 2;
 		SushiCamera.Instance.Initialise(player1, player2);
+		*/
+		Application.LoadLevel("newscene");
 		UnPause();
-	}
-	
-	void Restart()
-	{
-		Application.LoadLevel(Application.loadedLevel);
-		AudioListener.volume = 1f;
 	}
 	
 	
@@ -79,7 +76,7 @@ public class GameManager : Singleton<GameManager>
 		Time.timeScale = 1f;
 	}
 	
-	public void GameOver(int score)
+	public void GameOver()
 	{
 		Screen.lockCursor = false;
 		state = State.GameOver;
@@ -89,6 +86,7 @@ public class GameManager : Singleton<GameManager>
 	void Awake()
 	{
 		menuSkin = (GUISkin)Resources.Load("Menus", typeof(GUISkin));
+		DontDestroyOnLoad(this.gameObject);
 	}
 	
 	void Update()
@@ -137,7 +135,7 @@ public class GameManager : Singleton<GameManager>
 		
 		GUILayout.BeginHorizontal();
 		if (GUILayout.Button("Rematch!", menuSkin.button))
-			Restart();
+			StartGame();
 		
 		if (GUILayout.Button ("Main menu", menuSkin.button))
 			gui = GUIState.MainMenu;
