@@ -17,6 +17,12 @@ public class ScreenShake : Singleton<ScreenShake>
 		originalPosition = cam.localPosition;
 	}
 	
+	void OnLevelWasLoaded() {
+		cam = Camera.main.transform;
+		if (cam == null) Debug.LogError("could not find main camera");
+		originalPosition = cam.localPosition;
+	}
+	
 	public void Shake(float magnitude, float decay)
 	{
 		mag = magnitude;

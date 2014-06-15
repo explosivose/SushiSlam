@@ -14,6 +14,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip sushiEatClip;
 	public AudioClip[] croudCheerClip;
 	public AudioClip[] croudImpressedClip;
+	public AudioClip sushiSlam;
 	public GameObject sparkPrefab;
 	public GameObject dustPrefab;
 
@@ -306,7 +307,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 			else {
 				StartCoroutine(victory());
-				ScreenShake.Instance.Shake(1f, 2f);
+				AudioSource.PlayClipAtPoint(sushiSlam, transform.position);
+				ScreenShake.Instance.Shake(1f, 0.5f);
 				SushiCamera.Instance.ready = false;
 				Debug.Log ("i am dead waah");
 				dead = true;

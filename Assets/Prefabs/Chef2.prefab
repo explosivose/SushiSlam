@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f05f50034185bd64bba3d2d765f0ca56, type: 3}
   - {fileID: 8300000, guid: c9ce38cafc6d8c443be183726720311e, type: 3}
   - {fileID: 8300000, guid: 27f4bfe41448f664f8280f8aec569fec, type: 3}
+  sushiSlam: {fileID: 8300000, guid: 03257d484a3573b42ac2e5cd3374b58c, type: 3}
   sparkPrefab: {fileID: 100000, guid: 24b8c2206ec4c2e46b1b639ea73c775f, type: 2}
   dustPrefab: {fileID: 100000, guid: 39ed729e0e75e5b468fd668a501e5136, type: 2}
   p: 2
