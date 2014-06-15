@@ -308,7 +308,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
 		AudioSource.PlayClipAtPoint(fleshHit, transform.position);
 		int j = Random.Range (0, croudCheerClip.Length);
-		AudioSource.PlayClipAtPoint(croudCheerClip[i], transform.position);
+		AudioSource.PlayClipAtPoint(croudCheerClip[j], transform.position);
 		grounded = false;
 		airControl = false;
 		anim.SetBool("Damaged", true);
