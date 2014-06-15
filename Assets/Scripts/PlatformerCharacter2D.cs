@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlatformerCharacter2D : MonoBehaviour 
 {
-	public GameObject gameManager;
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
 
@@ -222,7 +221,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				}
 			}
 			combo = 0;
-			gameManager.transform.SendMessage ("StartSpawn");
+			GameManager.Instance.transform.SendMessage ("StartSpawn");
 			break;
 		default:
 			combo = 0;
