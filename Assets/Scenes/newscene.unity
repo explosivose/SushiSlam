@@ -3317,6 +3317,7 @@ GameObject:
   - 114: {fileID: 1449698906}
   - 114: {fileID: 1449698908}
   - 114: {fileID: 1449698909}
+  - 95: {fileID: 1449698910}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3434,11 +3435,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Choice: 0
   p2Choice: 1
+  disableInput: 1
   selection:
   - {fileID: 1999760300}
   - {fileID: 185243806}
   p1selector: {fileID: 774906691}
   p2selector: {fileID: 903033601}
+--- !u!95 &1449698910
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1449698905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a260ddaaa0520924a9ce004f2205e784, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_HasTransformHierarchy: 1
 --- !u!1 &1465915255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3737,7 +3753,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1692215733}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.06256151, y: .681764781, z: 0}
+  m_LocalPosition: {x: -2.09001064, y: .681764781, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
