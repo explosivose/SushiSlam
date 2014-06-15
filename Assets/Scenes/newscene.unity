@@ -167,7 +167,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 34261947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.80073833, y: -2.63358927, z: 0}
+  m_LocalPosition: {x: -7.80073833, y: -2.6885407, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -218,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 60954114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.0878253, y: .700525284, z: 0}
+  m_LocalPosition: {x: -2.07408762, y: .673050642, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -550,11 +550,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 4b25846812404c1419c852cb3c278fed, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.03084898
+      value: -2.09933996
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4b25846812404c1419c852cb3c278fed, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.9620769
+      value: 1.92783117
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4b25846812404c1419c852cb3c278fed, type: 2}
       propertyPath: m_LocalPosition.z
@@ -766,7 +766,7 @@ Transform:
   m_PrefabInternal: {fileID: 428811984}
   m_GameObject: {fileID: 711181972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.03084898, y: 1.9620769, z: 0}
+  m_LocalPosition: {x: -2.09933996, y: 1.92783117, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1159,7 +1159,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .0588235296, g: .0196078438, b: .0117647061, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1205,6 +1205,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a4109064ddfe64c83d2261dc0e1631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p1: {fileID: 0}
+  p2: {fileID: 0}
+  ready: 0
 --- !u!1 &1677399307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1427,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870229545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.25316381, y: -2.65383434, z: 0}
+  m_LocalPosition: {x: 3.26003289, y: -2.68817925, z: -.239999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
