@@ -227,6 +227,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9ce38cafc6d8c443be183726720311e, type: 3}
   - {fileID: 8300000, guid: 27f4bfe41448f664f8280f8aec569fec, type: 3}
   sparkPrefab: {fileID: 100000, guid: 24b8c2206ec4c2e46b1b639ea73c775f, type: 2}
+  dustPrefab: {fileID: 100000, guid: 73a0b8abb24671d48b3f0f440ad4e39e, type: 2}
   p: 1
   maxSpeed: 10
   jumpForce: 300

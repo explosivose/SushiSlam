@@ -15,6 +15,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip[] croudCheerClip;
 	public AudioClip[] croudImpressedClip;
 	public GameObject sparkPrefab;
+	public GameObject dustPrefab;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -94,7 +95,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
-		if (grounded) anim.SetBool("Jump", false);
+		if (grounded) anim.SetBool ("Jump", false);
 
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
@@ -330,6 +331,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 		yield return new WaitForSeconds(0.5f);
 		airControl = true;
 		anim.SetBool("Damaged", false);
+		Vector3 dustPos = transform.position;
+		dustPos += Vector3.back * 0.3f;
+		dustPos += Vector3.down * 0.4f;
+		Instantiate(dustPrefab, dustPos, dustPrefab.transform.rotation);
 	}
 	
 	void Block() {
