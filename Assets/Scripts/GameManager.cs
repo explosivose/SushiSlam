@@ -42,8 +42,8 @@ public class GameManager : Singleton<GameManager>
 
 	void StartGame()
 	{
-		Transform player1 = playerPrefabs[CharacterSelection.Instance.p1Choice-1];
-		Transform player2 = playerPrefabs[CharacterSelection.Instance.p2Choice-1];
+		Transform player1 = playerPrefabs[CharacterSelection.Instance.p1Choice];
+		Transform player2 = playerPrefabs[CharacterSelection.Instance.p2Choice];
 		int p1spawn = Random.Range(0, spawnpoints.Length-1);
 		int p2spawn = Random.Range(0, spawnpoints.Length-1);
 		if (p1spawn == p2spawn) p1spawn++;

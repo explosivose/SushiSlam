@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -40,9 +41,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b8a4aaff498d64d953a49ad29bbf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefabs: []
-  player1SpawnPoint: {fileID: 0}
-  player2SpawnPoint: {fileID: 0}
+  playerPrefabs:
+  - {fileID: 400004, guid: 15b362c7ad9599640b3c9637fe74ea25, type: 2}
+  - {fileID: 400000, guid: aff4c28c03193eb438231132a137d004, type: 2}
+  spawnpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mainMenu:
     DesignHeight: 30
     HeightIs: 0
@@ -102,9 +109,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   sushiInPlay: 0
-  sushiSpawnTime: 0
+  sushiSpawnTime: 15
   sushiStartTime: 0
   sushi: {fileID: 100000, guid: 6f5a1f29c53bc494ea44406b7348d7be, type: 2}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d8d25b2de0cb14d90c3e48a15ba06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1Choice: 0
+  p2Choice: 1
+  selection:
+  - {fileID: 0}
+  - {fileID: 0}
+  p1selector: {fileID: 0}
+  p2selector: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

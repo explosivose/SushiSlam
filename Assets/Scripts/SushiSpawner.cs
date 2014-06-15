@@ -14,7 +14,6 @@ public class SushiSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		sushiInPlay = false;
-		sushiSpawnTime = 15;
 		sushiStartTime = Time.time;
 	}
 	
