@@ -177,8 +177,12 @@ public class GameManager : Singleton<GameManager>
 	void wHowToPlay(int windowID)
 	{
 		GUILayout.Space (100);
-		
+		GUILayout.Label ("Time your attacks for a combo!\n" +
+						"Grab the sushi to deal a fatal SUSHI STRIKE to your opponent!"
+						, menuSkin.label);
+		GUILayout.Space (10);
 		GUILayout.Label ("SushiSlam Default Controls", menuSkin.label);
+		GUILayout.Space (10);
 		GUILayout.BeginHorizontal();
 		GUILayout.Label("Player 1", menuSkin.label);
 		GUILayout.Label("Player 2", menuSkin.label);
