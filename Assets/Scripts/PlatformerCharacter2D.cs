@@ -291,11 +291,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 				int i = Random.Range (0, deathClips.Length);
 				AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
 				int j = Random.Range (0, winClips.Length);
-				AudioSource.PlayClipAtPoint(winClips[j], transform.position);
+				
 				dead = true;
 				Debug.Log ("i am dead waah");
 				anim.SetBool("Kill", true);
-				yield return new WaitForSeconds(4f);
+				yield return new WaitForSeconds(2f);
+				AudioSource.PlayClipAtPoint(winClips[j], transform.position);
 				//Destroy (gameObject);
 			}
 		}
