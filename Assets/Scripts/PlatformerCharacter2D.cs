@@ -90,7 +90,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	void FixedUpdate(){
-		Move();
+		if (!dead)
+			Move();
 	}
 
 	void Move()
