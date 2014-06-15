@@ -57,7 +57,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool sushi = false;
 	bool dead = false;
 	int combo = 0;
-	
+	ParticleSystem sushiEffect;
 
     void Awake()
 	{
@@ -65,6 +65,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
 		anim = GetComponent<Animator>();
+		sushiEffect = transform.FindChild ("sushi power").particleSystem;
+		sushiEffect.Stop ();
 	}
 
 
@@ -307,6 +309,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			combo = 5;
 			Debug.Log (combo);
 			Destroy (collision.gameObject);
+			sushiEffect.Play ();
 		}
 	}
 }
