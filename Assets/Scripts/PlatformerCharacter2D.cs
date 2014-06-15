@@ -135,6 +135,39 @@ public class PlatformerCharacter2D : MonoBehaviour
 		transform.localScale = theScale;
 	}
 	
+	void Attack()
+	{
+		if (grounded && !attacking) {
+			if (Input.GetButtonDown("P"+p.ToString()+"Attack")) {
+				if ( combo == 0 ) {
+					anim.SetInteger("Combo", ++combo);
+					StartCoroutine(AttackRoutine());
+				}
+				else if (combo == 5) {
+					anim.SetInteger("Combo", combo);
+					StartCoroutine(AttackRoutine());
+				}
+				else {
+					
+					if (Time.time - timing.lastAttackTime > timing.timeBetweenAttacks - timing.timeBetweenAttacksWindowSize/2f &&
+					    Time.time - timing.lastAttackTime < timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize/2f) {
+						anim.SetInteger("Combo", ++combo);
+						StartCoroutine(AttackRoutine());
+					}
+					else {
+						combo = 0;
+						anim.SetInteger("Combo", combo);
+					}
+				}
+			}
+		}
+		// waited too long, combo back to zero
+		if (Time.time > timing.lastAttackTime + timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize && !sushi) {
+			combo = 0;
+			anim.SetInteger("Combo", combo);
+		}
+	}
+	
 	
 	IEnumerator AttackRoutine() {
 		attacking = true;
@@ -201,7 +234,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 			else {
 				anim.SetBool("Damaged", true);
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(0.167f);
 				anim.SetBool("Damaged", false);
 			}
 		}
@@ -221,9 +254,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	public IEnumerator Knockback() {
-		anim.SetBool("Damaged", true);
+		grounded = false;
 		airControl = false;
-		yield return new WaitForSeconds(1f);
+		anim.SetBool("Damaged", true);
+		anim.SetBool("Ground", grounded);
+		yield return new WaitForSeconds(0.5f);
 		airControl = true;
 		anim.SetBool("Damaged", false);
 	}
@@ -246,38 +281,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 		canBlock = true;
 	}
 	
-	void Attack()
-	{
-		if (grounded && !attacking) {
-			if (Input.GetButtonDown("P"+p.ToString()+"Attack")) {
-				if ( combo == 0 ) {
-					anim.SetInteger("Combo", ++combo);
-					StartCoroutine(AttackRoutine());
-				}
-				else if (combo == 5) {
-					anim.SetInteger("Combo", combo);
-					StartCoroutine(AttackRoutine());
-				}
-				else {
-					
-					if (Time.time - timing.lastAttackTime > timing.timeBetweenAttacks - timing.timeBetweenAttacksWindowSize/2f &&
-						Time.time - timing.lastAttackTime < timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize/2f) {
-							anim.SetInteger("Combo", ++combo);
-							StartCoroutine(AttackRoutine());
-					}
-					else {
-						combo = 0;
-						anim.SetInteger("Combo", combo);
-					}
-				}
-			}
-		}
-		// waited too long, combo back to zero
-		if (Time.time > timing.lastAttackTime + timing.timeBetweenAttacks + timing.timeBetweenAttacksWindowSize && !sushi) {
-			combo = 0;
-			anim.SetInteger("Combo", combo);
-		}
-	}
+
 	
 	Vector2 WeaponStart() {
 		return new Vector2(transform.position.x, transform.position.y);
