@@ -9,6 +9,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip fleshHit;
 	public AudioClip[] swordBlockClips;
 	public AudioClip[] attackClips;
+	public AudioClip victoryClip;
+	public AudioClip[] winClips;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -281,8 +283,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 			AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
 		}
 		else {
+			StartCoroutine(victory());
 			int i = Random.Range (0, deathClips.Length);
 			AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
+			int j = Random.Range (0, winClips.Length);
+			AudioSource.PlayClipAtPoint(winClips[j], transform.position);
 			dead = true;
 			Debug.Log ("i am dead waah");
 			anim.SetBool("Kill", true);
@@ -320,6 +325,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim.SetBool("Block", blocked);
 		yield return new WaitForSeconds(timing.blockCooldown);
 		canBlock = true;
+	}
+
+	IEnumerator victory() {
+		yield return new WaitForSeconds (4);
+		AudioSource.PlayClipAtPoint(victoryClip, GameManager.Instance.transform.position);
 	}
 	
 
