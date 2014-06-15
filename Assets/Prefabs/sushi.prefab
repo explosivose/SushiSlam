@@ -12,7 +12,7 @@ GameObject:
   - 199: {fileID: 19900000}
   - 212: {fileID: 21200000}
   m_Layer: 0
-  m_Name: Sushi
+  m_Name: sushi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
