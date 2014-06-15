@@ -247,6 +247,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			combo = 0;
 			sushi = false;
 			sushiEffect.Stop ();
+			MusicManager.Instance.SendMessage("Fight");
 			SushiSpawner.Instance.SendMessage("StartSpawn");
 			break;
 		default:
@@ -295,6 +296,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 			else {
 				StartCoroutine(victory());
+				
 				int i = Random.Range (0, deathClips.Length);
 				AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
 				int j = Random.Range (0, winClips.Length);
@@ -343,7 +345,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 	IEnumerator victory() {
-		yield return new WaitForSeconds (4);
+		yield return new WaitForSeconds(0.5f);
+		MusicManager.Instance.SendMessage("FadeOut");
+		yield return new WaitForSeconds (3f);
 		AudioSource.PlayClipAtPoint(victoryClip, Vector3.zero);
 		GameManager.Instance.GameOver();
 	}
@@ -357,6 +361,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision){
 		if (collision.gameObject.tag == "Sushi") {
 			Debug.Log ("ultimate sushi eaten");
+			MusicManager.Instance.SendMessage("Sushi");
 			AudioSource.PlayClipAtPoint(sushiEatClip, transform.position);
 			sushi = true;
 			combo = 5;

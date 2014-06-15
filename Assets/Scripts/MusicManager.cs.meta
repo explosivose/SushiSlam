@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 01f7edc0359487747b6e07526a380a35
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - menuMusic: {fileID: 8300000, guid: 41a68489133f13b4a98463b90abcf392, type: 3}
+  - menuStart: {fileID: 8300000, guid: 6ba9cb917ef34bd4189997858c0d83ad, type: 3}
+  - fightMusic: {fileID: 8300000, guid: 14bd79acd14beff488dd544a3d473ec8, type: 3}
+  - fightStart: {fileID: 8300000, guid: 16e0ad5a981b8624a85f70ba35e168a6, type: 3}
+  - sushiSlam: {fileID: 8300000, guid: b49c839fc073fc246a2fb06ca5eef823, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

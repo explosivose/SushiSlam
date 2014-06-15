@@ -56,6 +56,7 @@ public class GameManager : Singleton<GameManager>
 		SushiCamera.Instance.Initialise(player1, player2);
 		*/
 		Application.LoadLevel("newscene");
+		MusicManager.Instance.SendMessage("FightStart");
 		UnPause();
 	}
 	
@@ -87,6 +88,7 @@ public class GameManager : Singleton<GameManager>
 	{
 		menuSkin = (GUISkin)Resources.Load("Menus", typeof(GUISkin));
 		DontDestroyOnLoad(this.gameObject);
+		MusicManager.Instance.SendMessage("MainMenu");
 	}
 	
 	void Update()
