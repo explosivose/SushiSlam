@@ -4,8 +4,8 @@ using System.Collections;
 public class GameManager : Singleton<GameManager> 
 {
 	public Transform[] playerPrefabs;
-	public Transform player1SpawnPoint;
-	public Transform player2SpawnPoint;
+	public Transform[] spawnpoints;
+
 	public bool GameIsPaused
 	{
 		get 
@@ -44,9 +44,13 @@ public class GameManager : Singleton<GameManager>
 	{
 		Transform player1 = playerPrefabs[CharacterSelection.Instance.p1Choice-1];
 		Transform player2 = playerPrefabs[CharacterSelection.Instance.p2Choice-1];
-		player1 = Instantiate(player1, player1SpawnPoint.position, Quaternion.identity) as Transform;
+		int p1spawn = Random.Range(0, spawnpoints.Length-1);
+		int p2spawn = Random.Range(0, spawnpoints.Length-1);
+		if (p1spawn == p2spawn) p1spawn++;
+		if (p1spawn > spawnpoints.Length) p1spawn = 0;
+		player1 = Instantiate(player1, spawnpoints[p1spawn].position, Quaternion.identity) as Transform;
 		player1.GetComponent<PlatformerCharacter2D>().p = 1;
-		player2 = Instantiate(player2, player2SpawnPoint.position, Quaternion.identity) as Transform;
+		player2 = Instantiate(player2, spawnpoints[p1spawn].position, Quaternion.identity) as Transform;
 		player2.GetComponent<PlatformerCharacter2D>().p = 2;
 		SushiCamera.Instance.Initialise(player1, player2);
 		UnPause();
