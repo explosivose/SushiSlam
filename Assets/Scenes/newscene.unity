@@ -3528,6 +3528,8 @@ GameObject:
   - 4: {fileID: 1692215735}
   - 212: {fileID: 1692215734}
   - 61: {fileID: 1692215736}
+  - 61: {fileID: 1692215738}
+  - 61: {fileID: 1692215737}
   m_Layer: 0
   m_Name: bg
   m_TagString: Untagged
@@ -3580,6 +3582,28 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: 2.93214846, y: .0894041061}
   m_Center: {x: -.144349813, y: -2.53719759}
+--- !u!61 &1692215737
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692215733}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: .0762653351, y: 35.4475937}
+  m_Center: {x: 9.36686611, y: 13.2687969}
+--- !u!61 &1692215738
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1692215733}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Size: {x: .0647125244, y: 35.0837517}
+  m_Center: {x: -9.37271309, y: 13.0868797}
 --- !u!1001 &1799094893
 Prefab:
   m_ObjectHideFlags: 0
