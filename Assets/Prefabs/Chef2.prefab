@@ -210,6 +210,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4517b281c1d00d64bb8523f7bf08a672, type: 3}
   - {fileID: 8300000, guid: 6eb8c2d54c596d743910b6007e3efc85, type: 3}
   - {fileID: 8300000, guid: 30c2b6846c89e1446839b9e0dc6a67f8, type: 3}
+  sushiEatClip: {fileID: 8300000, guid: ad2e7114635cc6b478e69136ee879092, type: 3}
   p: 2
   maxSpeed: 10
   jumpForce: 300

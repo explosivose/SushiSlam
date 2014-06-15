@@ -11,6 +11,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip[] attackClips;
 	public AudioClip victoryClip;
 	public AudioClip[] winClips;
+	public AudioClip sushiEatClip;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -341,6 +342,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	void OnCollisionEnter2D(Collision2D collision){
 		if (collision.gameObject.tag == "Sushi") {
 			Debug.Log ("ultimate sushi eaten");
+			AudioSource.PlayClipAtPoint(sushiEatClip, transform.position);
 			sushi = true;
 			combo = 5;
 			Debug.Log (combo);
