@@ -20,7 +20,7 @@ public class SushiSpawner : MonoBehaviour {
 		if (sushiInPlay == false) {
 			if (Time.time > sushiStartTime + sushiSpawnTime) {
 				int spawnSel = Random.Range(0, 4);
-				Instantiate(sushi, spawnLocations[spawnSel].transform.position, sushi.transform.rotation);
+				Instantiate(sushi, spawnLocations[spawnSel].transform.position, Quaternion.identity);
 				sushiInPlay = true;
 			}
 		}

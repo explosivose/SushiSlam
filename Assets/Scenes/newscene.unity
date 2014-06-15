@@ -197,9 +197,9 @@ GameObject:
   - 212: {fileID: 185243812}
   - 95: {fileID: 185243811}
   - 58: {fileID: 185243810}
-  - 61: {fileID: 185243809}
   - 50: {fileID: 185243808}
   - 114: {fileID: 185243807}
+  - 61: {fileID: 185243809}
   m_Layer: 9
   m_Name: Chef
   m_TagString: Player
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p: 2
   maxSpeed: 10
-  jumpForce: 200
+  jumpForce: 300
   weaponLength: 1
   weaponOffset: {x: 0, y: 0}
   knockbackForce: 500
@@ -279,8 +279,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .200000003, y: .720000029}
-  m_Center: {x: -.0299999993, y: 0}
+  m_Size: {x: .670000017, y: 1.53999996}
+  m_Center: {x: 0, y: .0799999982}
 --- !u!58 &185243810
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -291,8 +291,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .100000001
-  m_Center: {x: -.0299999993, y: -.370000005}
+  m_Radius: .400000006
+  m_Center: {x: 0, y: -.529999971}
 --- !u!95 &185243811
 Animator:
   serializedVersion: 3
@@ -329,7 +329,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3940858523
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c004cc1afda6863419c93bd59af32145, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9289f9be6de36dd47934cb47e71b3330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &239011650
 GameObject:
@@ -562,7 +562,7 @@ Transform:
   m_PrefabInternal: {fileID: 1308533038}
   m_GameObject: {fileID: 689936564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .360000014, z: 0}
+  m_LocalPosition: {x: .319135427, y: .900075197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1999760300}
@@ -960,7 +960,7 @@ Transform:
   m_PrefabInternal: {fileID: 1575656876}
   m_GameObject: {fileID: 1465915255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .360000014, z: 0}
+  m_LocalPosition: {x: .319135427, y: .900075197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 185243806}
@@ -1014,7 +1014,7 @@ Transform:
   m_PrefabInternal: {fileID: 1575656876}
   m_GameObject: {fileID: 1558376100}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0349557362, y: -.463834077, z: 0}
+  m_LocalPosition: {x: .362735987, y: -.89589417, z: 0}
   m_LocalScale: {x: .564482868, y: .564483702, z: 1}
   m_Children: []
   m_Father: {fileID: 185243806}
@@ -1413,7 +1413,7 @@ Transform:
   m_PrefabInternal: {fileID: 1308533038}
   m_GameObject: {fileID: 1912339978}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0349557362, y: -.463834077, z: 0}
+  m_LocalPosition: {x: .362735987, y: -.89589417, z: 0}
   m_LocalScale: {x: .564482868, y: .564483702, z: 1}
   m_Children: []
   m_Father: {fileID: 1999760300}
@@ -1479,9 +1479,9 @@ GameObject:
   - 212: {fileID: 1999760306}
   - 95: {fileID: 1999760305}
   - 58: {fileID: 1999760304}
-  - 61: {fileID: 1999760303}
   - 50: {fileID: 1999760302}
   - 114: {fileID: 1999760301}
+  - 61: {fileID: 1999760303}
   m_Layer: 9
   m_Name: Chef
   m_TagString: Player
@@ -1517,7 +1517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p: 1
   maxSpeed: 10
-  jumpForce: 200
+  jumpForce: 300
   weaponLength: 1
   weaponOffset: {x: 0, y: 0}
   knockbackForce: 500
@@ -1561,8 +1561,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .200000003, y: .720000029}
-  m_Center: {x: -.0299999993, y: 0}
+  m_Size: {x: .670000017, y: 1.53999996}
+  m_Center: {x: 0, y: .0799999982}
 --- !u!58 &1999760304
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1573,8 +1573,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .100000001
-  m_Center: {x: -.0299999993, y: -.370000005}
+  m_Radius: .400000006
+  m_Center: {x: 0, y: -.529999971}
 --- !u!95 &1999760305
 Animator:
   serializedVersion: 3
@@ -1611,7 +1611,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3940858523
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c004cc1afda6863419c93bd59af32145, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9289f9be6de36dd47934cb47e71b3330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &2036604822
 GameObject:
