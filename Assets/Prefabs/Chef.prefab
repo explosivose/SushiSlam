@@ -41,9 +41,9 @@ GameObject:
   - 212: {fileID: 21200000}
   - 95: {fileID: 9500000}
   - 58: {fileID: 5800000}
-  - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
+  - 61: {fileID: 6100000}
   m_Layer: 9
   m_Name: Chef
   m_TagString: Player
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0349557362, y: -.463834077, z: 0}
+  m_LocalPosition: {x: .362735987, y: -.89589417, z: 0}
   m_LocalScale: {x: .564482868, y: .564483702, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .360000014, z: 0}
+  m_LocalPosition: {x: .319135427, y: .900075197, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.02978826, y: .0275473595, z: 0}
+  m_LocalPosition: {x: -3.04706979, y: -.0179552771, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400000}
@@ -113,8 +113,8 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Radius: .100000001
-  m_Center: {x: -.0299999993, y: -.370000005}
+  m_Radius: .400000006
+  m_Center: {x: 0, y: -.529999971}
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -124,8 +124,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: .200000003, y: .720000029}
-  m_Center: {x: -.0299999993, y: 0}
+  m_Size: {x: .670000017, y: 1.53999996}
+  m_Center: {x: 0, y: .0799999982}
 --- !u!95 &9500000
 Animator:
   serializedVersion: 3
@@ -151,9 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: 2
+  p: 1
   maxSpeed: 10
-  jumpForce: 200
+  jumpForce: 300
   weaponLength: 1
   weaponOffset: {x: 0, y: 0}
   knockbackForce: 500
@@ -191,7 +191,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 3940858523
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: c004cc1afda6863419c93bd59af32145, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9289f9be6de36dd47934cb47e71b3330, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

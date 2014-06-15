@@ -51,6 +51,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	Animator anim;										// Reference to the player's animator component.
 	bool jump;
 	bool attacking = false;
+	bool damaged = false;
 	bool blocked = false;
 	bool canBlock = true;
 	bool sushi = false;
@@ -137,7 +138,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	void Attack()
 	{
-		if (grounded && !attacking) {
+		if (grounded && !attacking && !damaged) {
 			if (Input.GetButtonDown("P"+p.ToString()+"Attack")) {
 				if ( combo == 0 ) {
 					anim.SetInteger("Combo", ++combo);
@@ -172,46 +173,53 @@ public class PlatformerCharacter2D : MonoBehaviour
 	IEnumerator AttackRoutine() {
 		attacking = true;
 		timing.lastAttackTime = Time.time;
-		RaycastHit2D hit;
+		RaycastHit2D[] hits;
 		Vector2 direction = Vector2.right;
 		if (!facingRight) direction = -Vector2.right;
 		switch (combo)
 		{
 		case 1:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
-			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player" && hit.transform != transform) {
-				Debug.Log ("I hit a player");
-				hit.transform.SendMessage("Damage");
+			hits = Physics2D.CircleCastAll(WeaponStart() + weaponOffset, weaponLength, direction);
+			foreach(RaycastHit2D hit in hits) {
+				if (hit.transform.tag == "Player" && hit.transform != transform && Vector2.Distance(hit.point, WeaponStart()) < weaponLength) {
+					Debug.Log ("I hit a player");
+					hit.transform.SendMessage("Damage");
+				}
 			}
-				
 			break;
 		case 2:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
-			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player" && hit.transform != transform) {
-				Debug.Log ("I hit a player");
-				hit.transform.SendMessage("Damage");
+			hits = Physics2D.CircleCastAll(WeaponStart() + weaponOffset, weaponLength, direction);
+			foreach(RaycastHit2D hit in hits) {
+				if (hit.transform.tag == "Player" && hit.transform != transform && Vector2.Distance(hit.point, WeaponStart()) < weaponLength) {
+					Debug.Log ("I hit a player");
+					hit.transform.SendMessage("Damage");
+				}
 			}
 			break;
 		case 3:
 			Debug.DrawRay(transform.position, direction * weaponLength, Color.red, 1f);
-			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength, direction);
-			if (hit.transform.tag == "Player" && hit.transform != transform) {
-				Debug.Log ("I knocked a player");
-				hit.rigidbody.AddForce((direction+Vector2.up) * knockbackForce);
-				hit.transform.SendMessage("Knockback");
+			hits = Physics2D.CircleCastAll(WeaponStart() + weaponOffset, weaponLength, direction);
+			foreach(RaycastHit2D hit in hits) {
+				if (hit.transform.tag == "Player" && hit.transform != transform && Vector2.Distance(hit.point, WeaponStart()) < weaponLength) {
+					Debug.Log ("I knocked a player");
+					hit.rigidbody.AddForce((direction+Vector2.up) * knockbackForce);
+					hit.transform.SendMessage("Knockback");
+				}
 			}
 			break;
 		case 5:
 			Debug.Log ("ultimate sushi slam");
 			Debug.DrawRay(transform.position, direction * weaponLength*2, Color.red, 1f);
-			hit = Physics2D.CircleCast(WeaponStart() + weaponOffset, weaponLength*2, direction);
-			if (hit.transform.tag == "Player" && hit.transform != transform) {
-				Debug.Log ("Sushi slamed a player");
-				hit.rigidbody.AddForce((direction+Vector2.up) * sushiForce);
-				hit.transform.SendMessage("killMe");
-				combo = 0;
+			hits = Physics2D.CircleCastAll(WeaponStart() + weaponOffset, weaponLength, direction);
+			foreach(RaycastHit2D hit in hits) {
+				if (hit.transform.tag == "Player" && hit.transform != transform && Vector2.Distance(hit.point, WeaponStart()) < weaponLength) {
+					Debug.Log ("Sushi slamed a player");
+					hit.rigidbody.AddForce((direction+Vector2.up) * sushiForce);
+					hit.transform.SendMessage("killMe");
+					combo = 0;
+				}
 			}
 			break;
 		default:
@@ -224,6 +232,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	public IEnumerator Damage() {
+		damaged = true;
 		if (blocked) {
 			Debug.Log ("I blocked");
 		}
@@ -238,7 +247,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 				anim.SetBool("Damaged", false);
 			}
 		}
-
+		damaged = false;
 	}
 	
 	public IEnumerator killMe() {

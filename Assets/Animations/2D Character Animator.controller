@@ -665,7 +665,7 @@ Transition:
   - m_ConditionMode: 5
     m_ConditionEvent: Block
     m_EventTreshold: 0
-    m_ExitTime: .25
+    m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
@@ -978,7 +978,7 @@ State:
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 0}
+  - {fileID: 7400000, guid: 341edccdc3dbed44581a9c07cdcf4d85, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
   m_Position: {x: -168, y: -144, z: 0}
   m_IKOnFeet: 0
@@ -1140,7 +1140,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Attack 3
-  m_Speed: .370999992
+  m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: 2176fb1566b396f44a3aa6a6f9d93db5, type: 2}
