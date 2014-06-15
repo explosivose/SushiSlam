@@ -79,6 +79,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim = GetComponent<Animator>();
 		sushiEffect = transform.FindChild ("sushi power").particleSystem;
 		sushiEffect.Stop ();
+		if (transform.position.x < Camera.main.transform.position.x) {
+			Flip();
+		}
 	}
 
 
