@@ -46,7 +46,7 @@ ParticleSystem:
   InitialModule:
     enabled: 1
     startLifetime:
-      scalar: 1.65999997
+      scalar: .670000017
       maxCurve:
         serializedVersion: 2
         m_Curve:
