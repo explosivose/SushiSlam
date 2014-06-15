@@ -210,6 +210,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9312a26472e50a8418d5dbd85e6c3168, type: 3}
   - {fileID: 8300000, guid: 2978dadd84a91854baa6947cb54fc87a, type: 3}
   sushiEatClip: {fileID: 8300000, guid: ad2e7114635cc6b478e69136ee879092, type: 3}
+  croudCheerClip:
+  - {fileID: 8300000, guid: bd9fa09fa5bca324eb4918924bd6df09, type: 3}
+  - {fileID: 8300000, guid: 525b95745af84984dabfc7cd66bbb5ee, type: 3}
+  - {fileID: 8300000, guid: dca48dd772c5aeb4ea6863d307bd02db, type: 3}
+  - {fileID: 8300000, guid: 841de97d981963a4fa8d7e6b3b9a7347, type: 3}
+  - {fileID: 8300000, guid: 4fde92d649c1b9b47a898db84448d473, type: 3}
+  - {fileID: 8300000, guid: a4e6ce2fafda94a43b333e83e5198861, type: 3}
+  - {fileID: 8300000, guid: 884040c280372a641b3a573f11d6e818, type: 3}
+  - {fileID: 8300000, guid: d8cfd3167c4339747a83ad91ccbe3b55, type: 3}
+  - {fileID: 8300000, guid: 7454471f8110b2142aa21eda83774604, type: 3}
+  - {fileID: 8300000, guid: c8d3f71299d3382479b6ec97e5bdccf8, type: 3}
   p: 1
   maxSpeed: 10
   jumpForce: 300

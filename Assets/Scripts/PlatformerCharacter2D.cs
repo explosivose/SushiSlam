@@ -12,6 +12,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip victoryClip;
 	public AudioClip[] winClips;
 	public AudioClip sushiEatClip;
+	public AudioClip[] croudCheerClip;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -306,6 +307,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		int i = Random.Range (0, damageClips.Length);
 		AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
 		AudioSource.PlayClipAtPoint(fleshHit, transform.position);
+		int j = Random.Range (0, croudCheerClip.Length);
+		AudioSource.PlayClipAtPoint(croudCheerClip[i], transform.position);
 		grounded = false;
 		airControl = false;
 		anim.SetBool("Damaged", true);
