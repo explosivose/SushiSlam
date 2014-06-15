@@ -221,7 +221,7 @@ MonoBehaviour:
   - {fileID: 1353000832}
   - {fileID: 893556711}
   sushiInPlay: 0
-  sushiSpawnTime: 5
+  sushiSpawnTime: 10
   sushiStartTime: 0
   sushi: {fileID: 100000, guid: 6f5a1f29c53bc494ea44406b7348d7be, type: 2}
 --- !u!4 &167446280

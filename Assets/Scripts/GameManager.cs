@@ -5,7 +5,7 @@ public class GameManager : Singleton<GameManager>
 {
 	public Transform[] playerPrefabs;
 	public Transform[] spawnpoints;
-
+	public AudioClip eatSushi;
 	public bool GameIsPaused
 	{
 		get 
@@ -121,8 +121,11 @@ public class GameManager : Singleton<GameManager>
 		if (GUILayout.Button("Options", menuSkin.button))
 			gui = GUIState.Options;
 		
-		if (GUILayout.Button ("Credits", menuSkin.button))
+		if (GUILayout.Button ("Credits", menuSkin.button)) {
+			AudioSource.PlayClipAtPoint(eatSushi, Vector3.zero);
 			gui = GUIState.Credits;
+		}
+			
 		
 		if (GUILayout.Button ("Exit", menuSkin.button))
 			Application.Quit();

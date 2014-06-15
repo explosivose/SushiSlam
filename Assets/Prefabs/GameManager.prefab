@@ -45,6 +45,7 @@ MonoBehaviour:
   spawnpoints:
   - {fileID: 0}
   - {fileID: 0}
+  eatSushi: {fileID: 8300000, guid: 2c7b62c3c5850ed4ba818154c0e8bfe4, type: 3}
   mainMenu:
     DesignHeight: 30
     HeightIs: 0

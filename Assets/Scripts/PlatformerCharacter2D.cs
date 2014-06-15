@@ -307,6 +307,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			else {
 				StartCoroutine(victory());
 				ScreenShake.Instance.Shake(1f, 2f);
+				SushiCamera.Instance.ready = false;
 				Debug.Log ("i am dead waah");
 				dead = true;
 				int i = Random.Range (0, deathClips.Length);
