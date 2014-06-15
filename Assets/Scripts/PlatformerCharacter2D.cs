@@ -295,23 +295,23 @@ public class PlatformerCharacter2D : MonoBehaviour
 		if (!dead) {
 			if (blocked) {
 				Debug.Log ("I blocked ultimate sushi");
+				Time.timeScale = 0.2f;
 				int i = Random.Range (0, swordBlockClips.Length);
 				AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
 				int j = Random.Range (0, croudImpressedClip.Length);
 				AudioSource.PlayClipAtPoint(croudImpressedClip[j], transform.position);
+				yield return StartCoroutine(Wait.ForRealSeconds(2f));
+				Time.timeScale = 1f;
 			}
 			else {
 				StartCoroutine(victory());
-				
+				ScreenShake.Instance.Shake(1f, 2f);
+				Debug.Log ("i am dead waah");
+				dead = true;
 				int i = Random.Range (0, deathClips.Length);
 				AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
-				int j = Random.Range (0, winClips.Length);
-				
-				dead = true;
-				Debug.Log ("i am dead waah");
 				anim.SetBool("Kill", true);
-				yield return new WaitForSeconds(2f);
-				AudioSource.PlayClipAtPoint(winClips[j], transform.position);
+				yield return StartCoroutine(Wait.ForRealSeconds(4f));
 				//Destroy (gameObject);
 			}
 		}
@@ -352,8 +352,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 	IEnumerator victory() {
+		
 		yield return new WaitForSeconds(1f);
 		MusicManager.Instance.SendMessage("FadeOut");
+		yield return new WaitForSeconds(1f);
+		int j = Random.Range (0, winClips.Length);
+		AudioSource.PlayClipAtPoint(winClips[j], transform.position);
 		yield return new WaitForSeconds (3f);
 		AudioSource.PlayClipAtPoint(victoryClip, Vector3.zero);
 		GameManager.Instance.GameOver();
