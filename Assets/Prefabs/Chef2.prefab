@@ -151,6 +151,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d08f91df3bd212f429df17f53ce2f364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathClips:
+  - {fileID: 8300000, guid: 6e37ddb9825c09a45a3f250f80b8aefb, type: 3}
+  - {fileID: 8300000, guid: 4c5a296c62fdaee499f9341e74513b69, type: 3}
+  - {fileID: 8300000, guid: e7c5b9f2c7a93a143a211b642e2fb60b, type: 3}
+  - {fileID: 8300000, guid: 490dfaea17c75144fa5fa4774d159949, type: 3}
+  - {fileID: 8300000, guid: 301ab465ca936624c980db02a00c81c5, type: 3}
+  - {fileID: 8300000, guid: 84cb3e61eb63cbb4893a18e1a4a1d710, type: 3}
+  jumpClips:
+  - {fileID: 8300000, guid: 7943bcac653610e4db2e6bb681d42e0e, type: 3}
+  - {fileID: 8300000, guid: f0c50a3930a1ed0449be3d22c772cf5b, type: 3}
+  - {fileID: 8300000, guid: 6661463b61d9ec94db5130761df120c0, type: 3}
+  damageClips:
+  - {fileID: 8300000, guid: 8e241c1f37e632e4688ca7510968e94c, type: 3}
+  - {fileID: 8300000, guid: c3e3ee19027904947a758f9c4768e3a8, type: 3}
+  - {fileID: 8300000, guid: 4660dd55fcd0fba4e96378dc9be302c8, type: 3}
+  - {fileID: 8300000, guid: e441dca07f929134396712e2c5682298, type: 3}
+  - {fileID: 8300000, guid: bbf68e8144355964eb2c8b9602bc7c85, type: 3}
+  fleshHit: {fileID: 8300000, guid: d53bb7f8b777dc6439d61e42852cd2b1, type: 3}
+  swordBlockClips:
+  - {fileID: 8300000, guid: 0f472c0d07486e14ebe561f3c6fc0ed2, type: 3}
+  - {fileID: 8300000, guid: d4a421150421cca419e5e0380aa802d9, type: 3}
+  attackClips:
+  - {fileID: 8300000, guid: 3a057f75d4aa0d4479589927f27613de, type: 3}
+  - {fileID: 8300000, guid: 2d2e4a2f9d549454ca16ef8d55519204, type: 3}
   p: 2
   maxSpeed: 10
   jumpForce: 300

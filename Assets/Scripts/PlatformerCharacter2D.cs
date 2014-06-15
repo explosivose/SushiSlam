@@ -3,6 +3,13 @@ using System.Collections;
 
 public class PlatformerCharacter2D : MonoBehaviour 
 {
+	public AudioClip[] deathClips;
+	public AudioClip[] jumpClips;
+	public AudioClip[] damageClips;
+	public AudioClip fleshHit;
+	public AudioClip[] swordBlockClips;
+	public AudioClip[] attackClips;
+
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
 
@@ -121,6 +128,8 @@ public class PlatformerCharacter2D : MonoBehaviour
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
             anim.SetBool("Jump", true);
+			int i = Random.Range (0, deathClips.Length);
+			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
             jump = false;
         }
@@ -141,6 +150,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	{
 		if (grounded && !attacking && !damaged) {
 			if (Input.GetButtonDown("P"+p.ToString()+"Attack")) {
+				int i = Random.Range (0, attackClips.Length);
+				AudioSource.PlayClipAtPoint(attackClips[i], transform.position);
+
 				if ( combo == 0 ) {
 					anim.SetInteger("Combo", ++combo);
 					StartCoroutine(AttackRoutine());
@@ -238,9 +250,14 @@ public class PlatformerCharacter2D : MonoBehaviour
 		damaged = true;
 		if (blocked) {
 			Debug.Log ("I blocked");
+			int i = Random.Range (0, swordBlockClips.Length);
+			AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
 		}
 		else {
 			Debug.Log ("I got hit!");
+			int i = Random.Range (0, damageClips.Length);
+			AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
+			AudioSource.PlayClipAtPoint(fleshHit, transform.position);
 			if (!grounded) {
 				yield return StartCoroutine(Knockback());
 			}
@@ -256,8 +273,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public IEnumerator killMe() {
 		if (blocked) {
 			Debug.Log ("I blocked ultimate sushi");
+			int i = Random.Range (0, swordBlockClips.Length);
+			AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
 		}
 		else {
+			int i = Random.Range (0, deathClips.Length);
+			AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
 			dead = true;
 			Debug.Log ("i am dead waah");
 			anim.SetBool("Kill", true);
@@ -267,6 +288,9 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	public IEnumerator Knockback() {
+		int i = Random.Range (0, damageClips.Length);
+		AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
+		AudioSource.PlayClipAtPoint(fleshHit, transform.position);
 		grounded = false;
 		airControl = false;
 		anim.SetBool("Damaged", true);

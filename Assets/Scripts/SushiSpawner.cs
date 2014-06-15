@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class SushiSpawner : MonoBehaviour {
+
+	public AudioClip sushiSpawnClip;
+
 	public GameObject[] spawnLocations;
 	public bool sushiInPlay = false;
 	public float sushiSpawnTime;
@@ -22,6 +25,7 @@ public class SushiSpawner : MonoBehaviour {
 				int spawnSel = Random.Range(0, 4);
 				Instantiate(sushi, spawnLocations[spawnSel].transform.position, Quaternion.identity);
 				sushiInPlay = true;
+				AudioSource.PlayClipAtPoint(sushiSpawnClip, transform.position);
 			}
 		}
 	}
