@@ -6,6 +6,7 @@ public class SushiSpawner : MonoBehaviour {
 	public bool sushiInPlay = false;
 	public float sushiSpawnTime;
 	public float sushiStartTime;
+	public GameObject sushi;
 
 	// Use this for initialization
 	void Start () {
@@ -18,8 +19,8 @@ public class SushiSpawner : MonoBehaviour {
 	void Update () {
 		if (sushiInPlay == false) {
 			if (Time.time > sushiStartTime + sushiSpawnTime) {
-				int spawnSel = Random.Range(1, 5);
-				Instantiate(Sushi, spawnLocations[spawnSel].transform.position);
+				int spawnSel = Random.Range(0, 4);
+				Instantiate(sushi, spawnLocations[spawnSel].transform.position, sushi.transform.rotation);
 				sushiInPlay = true;
 			}
 		}
