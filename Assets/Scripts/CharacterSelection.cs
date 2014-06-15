@@ -8,6 +8,9 @@ public class CharacterSelection : Singleton<CharacterSelection> {
 	public int p1Choice = 1;
 	public int p2Choice = 2;
 	
+	public Transform p1selector;
+	public Transform p2selector;
+	
 	// Use this for initialization
 	void Start () {
 		StartCoroutine(p1select());
