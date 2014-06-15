@@ -1,0 +1,6 @@
+ready = plays when game is about to begin
+basicbeat = when game is in play normally
+charselect = nuff said
+ready = characters chosen, game about to begin
+ambientnoises = while on the menu screen before character select
+sushi slam = when sushi is gained and game is close to end (speed up every 5 seconds maybe, sounds pretty good at 120bpm)

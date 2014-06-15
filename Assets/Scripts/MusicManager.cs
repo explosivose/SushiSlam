@@ -14,6 +14,22 @@ public class MusicManager : Singleton<MusicManager> {
 		gameObject.AddComponent<AudioSource>();
 		audio.loop = true;
 		DontDestroyOnLoad(this.gameObject);
+		menuMusic = Resources.Load ("Music/charselect") as AudioClip;
+		menuStart = Resources.Load ("Music/intro") as AudioClip;
+		fightMusic = Resources.Load ("Music/basicbeat") as AudioClip;
+		fightStart = Resources.Load("Music/ready") as AudioClip;
+		sushiSlam = Resources.Load("Music/sushislam (speed me up!)") as AudioClip;
+	}
+	
+	void Update() {
+		if (audio.clip == sushiSlam) {
+			Debug.Log ("derp");
+			audio.pitch += Time.deltaTime * 0.01f;
+			if (audio.pitch > 1.4f) audio.pitch = 1.4f;
+		}
+		else {
+			audio.pitch = 1f;
+		}
 	}
 	
 	public IEnumerator FadeOut() {

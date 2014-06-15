@@ -352,7 +352,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 
 	IEnumerator victory() {
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(1f);
 		MusicManager.Instance.SendMessage("FadeOut");
 		yield return new WaitForSeconds (3f);
 		AudioSource.PlayClipAtPoint(victoryClip, Vector3.zero);
