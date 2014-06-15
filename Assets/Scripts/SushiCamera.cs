@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SushiCamera : Singleton<SushiCamera> {
 
+	public float minimumCameraSize = 1f;
+
 	public void Initialise(Transform player1, Transform player2) {
 		p1 = player1;
 		p2 = player2;
@@ -18,6 +20,7 @@ public class SushiCamera : Singleton<SushiCamera> {
 		float distance = Vector3.Distance(p1.position, p2.position);
 		average.z = -10f;
 		transform.position = average;
-		camera.orthographicSize = distance;
+		if (distance < minimumCameraSize) distance = minimumCameraSize;
+		camera.orthographicSize = Mathf.Lerp (camera.orthographicSize, distance, Time.deltaTime) ;
 	}
 }
