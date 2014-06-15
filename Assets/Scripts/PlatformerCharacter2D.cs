@@ -254,46 +254,50 @@ public class PlatformerCharacter2D : MonoBehaviour
 	}
 	
 	public IEnumerator Damage() {
-		damaged = true;
-		if (blocked) {
-			Debug.Log ("I blocked");
-			int i = Random.Range (0, swordBlockClips.Length);
-			AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
-		}
-		else {
-			Debug.Log ("I got hit!");
-			int i = Random.Range (0, damageClips.Length);
-			AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
-			AudioSource.PlayClipAtPoint(fleshHit, transform.position);
-			if (!grounded) {
-				yield return StartCoroutine(Knockback());
+		if (!damaged) {
+			damaged = true;
+			if (blocked) {
+				Debug.Log ("I blocked");
+				int i = Random.Range (0, swordBlockClips.Length);
+				AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
 			}
 			else {
-				anim.SetBool("Damaged", true);
-				yield return new WaitForSeconds(0.167f);
-				anim.SetBool("Damaged", false);
+				Debug.Log ("I got hit!");
+				int i = Random.Range (0, damageClips.Length);
+				AudioSource.PlayClipAtPoint(damageClips[i], transform.position);
+				AudioSource.PlayClipAtPoint(fleshHit, transform.position);
+				if (!grounded) {
+					yield return StartCoroutine(Knockback());
+				}
+				else {
+					anim.SetBool("Damaged", true);
+					yield return new WaitForSeconds(0.167f);
+					anim.SetBool("Damaged", false);
+				}
 			}
+			damaged = false;
 		}
-		damaged = false;
 	}
 	
 	public IEnumerator killMe() {
-		if (blocked) {
-			Debug.Log ("I blocked ultimate sushi");
-			int i = Random.Range (0, swordBlockClips.Length);
-			AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
-		}
-		else {
-			StartCoroutine(victory());
-			int i = Random.Range (0, deathClips.Length);
-			AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
-			int j = Random.Range (0, winClips.Length);
-			AudioSource.PlayClipAtPoint(winClips[j], transform.position);
-			dead = true;
-			Debug.Log ("i am dead waah");
-			anim.SetBool("Kill", true);
-			yield return new WaitForSeconds(4f);
-			Destroy (gameObject);
+		if (!dead) {
+			if (blocked) {
+				Debug.Log ("I blocked ultimate sushi");
+				int i = Random.Range (0, swordBlockClips.Length);
+				AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
+			}
+			else {
+				StartCoroutine(victory());
+				int i = Random.Range (0, deathClips.Length);
+				AudioSource.PlayClipAtPoint(deathClips[i], transform.position);
+				int j = Random.Range (0, winClips.Length);
+				AudioSource.PlayClipAtPoint(winClips[j], transform.position);
+				dead = true;
+				Debug.Log ("i am dead waah");
+				anim.SetBool("Kill", true);
+				yield return new WaitForSeconds(4f);
+				//Destroy (gameObject);
+			}
 		}
 	}
 	
