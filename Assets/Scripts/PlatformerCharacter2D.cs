@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlatformerCharacter2D : MonoBehaviour 
 {
+	public GameObject gameManager;
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
 
@@ -218,9 +219,10 @@ public class PlatformerCharacter2D : MonoBehaviour
 					Debug.Log ("Sushi slamed a player");
 					hit.rigidbody.AddForce((direction+Vector2.up) * sushiForce);
 					hit.transform.SendMessage("killMe");
-					combo = 0;
 				}
 			}
+			combo = 0;
+			gameManager.transform.SendMessage ("StartSpawn");
 			break;
 		default:
 			combo = 0;

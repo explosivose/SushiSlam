@@ -27,6 +27,7 @@ public class SushiSpawner : MonoBehaviour {
 	}
 
 	public IEnumerator StartSpawn() {
+		Debug.Log ("respawning sushi");
 		sushiInPlay = false;
 		sushiStartTime = Time.time;
 		yield return null;
