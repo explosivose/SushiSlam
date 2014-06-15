@@ -131,7 +131,7 @@ public class PlatformerCharacter2D : MonoBehaviour
             // Add a vertical force to the player.
             anim.SetBool("Ground", false);
             anim.SetBool("Jump", true);
-			int i = Random.Range (0, deathClips.Length);
+			int i = Random.Range (0, jumpClips.Length);
 			AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
             rigidbody2D.AddForce(new Vector2(0f, jumpForce));
             jump = false;
