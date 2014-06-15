@@ -55,6 +55,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool blocked = false;
 	bool canBlock = true;
 	bool sushi = false;
+	bool dead = false;
 	int combo = 0;
 	
 
@@ -69,7 +70,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	void Update()
 	{
-
+		if (dead) return;
 		
 	
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
@@ -256,6 +257,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			Debug.Log ("I blocked ultimate sushi");
 		}
 		else {
+			dead = true;
 			Debug.Log ("i am dead waah");
 			anim.SetBool("Kill", true);
 			yield return new WaitForSeconds(4f);
