@@ -45,9 +45,6 @@ MonoBehaviour:
   spawnpoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   mainMenu:
     DesignHeight: 30
     HeightIs: 0
@@ -59,7 +56,7 @@ MonoBehaviour:
   deathScreen:
     DesignHeight: 100
     HeightIs: 0
-    DesignWidth: 30
+    DesignWidth: 50
     WidthIs: 0
     Align: 4
     verticalOffset: 0
