@@ -13,6 +13,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip[] winClips;
 	public AudioClip sushiEatClip;
 	public AudioClip[] croudCheerClip;
+	public AudioClip[] croudImpressedClip;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -286,6 +287,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Debug.Log ("I blocked ultimate sushi");
 				int i = Random.Range (0, swordBlockClips.Length);
 				AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
+				int j = Random.Range (0, croudImpressedClip.Length);
+				AudioSource.PlayClipAtPoint(croudImpressedClip[j], transform.position);
 			}
 			else {
 				StartCoroutine(victory());

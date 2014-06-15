@@ -222,6 +222,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d8cfd3167c4339747a83ad91ccbe3b55, type: 3}
   - {fileID: 8300000, guid: 7454471f8110b2142aa21eda83774604, type: 3}
   - {fileID: 8300000, guid: c8d3f71299d3382479b6ec97e5bdccf8, type: 3}
+  croudImpressedClip:
+  - {fileID: 8300000, guid: 87555e8a944541745ac77594ef5e0bd9, type: 3}
+  - {fileID: 8300000, guid: f05f50034185bd64bba3d2d765f0ca56, type: 3}
+  - {fileID: 8300000, guid: c9ce38cafc6d8c443be183726720311e, type: 3}
+  - {fileID: 8300000, guid: 27f4bfe41448f664f8280f8aec569fec, type: 3}
   p: 2
   maxSpeed: 10
   jumpForce: 300
