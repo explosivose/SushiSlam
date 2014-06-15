@@ -226,6 +226,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 			}
 			combo = 0;
 			sushi = false;
+			sushiEffect.Stop ();
 			GameManager.Instance.transform.SendMessage ("StartSpawn");
 			break;
 		default:
