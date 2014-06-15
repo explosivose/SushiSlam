@@ -14,6 +14,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	public AudioClip sushiEatClip;
 	public AudioClip[] croudCheerClip;
 	public AudioClip[] croudImpressedClip;
+	public GameObject sparkPrefab;
 
 	public int p = 1;
 	bool facingRight = false;							// For determining which way the player is currently facing.
@@ -266,6 +267,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 				Debug.Log ("I blocked");
 				int i = Random.Range (0, swordBlockClips.Length);
 				AudioSource.PlayClipAtPoint(swordBlockClips[i], transform.position);
+
+				Vector3 sparkPos = (GameObject.Find("Chef").transform.localPosition + GameObject.Find("Chef2").transform.localPosition) / 2;
+				sparkPos += Vector3.up * 0.3f;
+				Instantiate (sparkPrefab, sparkPos, Quaternion.identity);
+
 			}
 			else {
 				Debug.Log ("I got hit!");
@@ -335,6 +341,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	IEnumerator BlockRoutine() {
 		blocked = true;
+
 		canBlock = false;
 		anim.SetBool("Block", blocked);
 		yield return new WaitForSeconds(timing.lengthOfBlock);
